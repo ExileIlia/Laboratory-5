@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Калькулятор</title>
+</head>
+<body>
+  <h1>Калькулятор</h1>
+
+  <label for="num1">Перше число:</label>
+  <input type="number" id="num1">
+
+  <label for="num2">Друге число:</label>
+  <input type="number" id="num2">
+
+  <label for="operator">Операція (+, -, , /, ^, sqrt):</label>
+  <input type="text" id="operator">
+
+  <button onclick="calculate()">Обчислити</button>
+
+  <h2>Результат:</h2>
+  <p id="result"></p>
+
+  <script>
+    function calculate() {
+      var num1 = parseFloat(document.getElementById("num1").value);
+      var num2 = parseFloat(document.getElementById("num2").value);
+      var operator = document.getElementById("operator").value;
+
+      var result;
+
+      if (operator === '+') {
+        result = add(num1, num2);
+      } else if (operator === '-') {
+        result = subtract(num1, num2);
+      } else if (operator === '') {
+        result = multiply(num1, num2);
+      } else if (operator === '/') {
+        result = divide(num1, num2);
+      } else if (operator === '^') {
+        result = power(num1, num2);
+      } else if (operator === 'sqrt') {
+        result = sqrt(num1);
+      } else {
+        result = "Невірна операція";
+      }
+
+      if (isNaN(result)) {
+        document.getElementById("result").textContent = "Невірний результат";
+      } else {
+        document.getElementById("result").textContent = "Результат: " + result;
+      }
+    }
+
+    function add(a, b) {
+      return a + b;
+    }
+
+    function subtract(a, b) {
+      return a - b;
+    }
+
+    function multiply(a, b) {
+      return a * b;
+    }
+
+    function divide(a, b) {
+      return a / b;
+    }
+
+    function power(base, exponent) {
+      return Math.pow(base, exponent);
+    }
+
+    function sqrt(num) {
+      return Math.sqrt(num);
+    }
+  </script>
+</body>
+</html>
